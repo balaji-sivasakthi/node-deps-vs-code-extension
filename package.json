@@ -34,7 +34,7 @@
         "command": "nodeDependencies.refreshEntry",
         "title": "Refresh",
         "icon":{
-          "light": "./resources/dark/refresh.svg",
+          "light": "./resources/light/refresh.svg",
           "dark": "./resources/dark/refresh.svg"
         }
       }
