@@ -54,7 +54,7 @@ export class NodeDeps implements TreeDataProvider<Dependency> {
                 : [];
             const devDeps = packageJson.devDependencies
                 ? Object.keys(packageJson.devDependencies).map(dep=>{
-                    return toDep( '[DEV] ' + dep,packageJson.devDependencies[dep])
+                    return toDep(dep,packageJson.devDependencies[dep]+" (Dev)")
                 })
                 : [];
             return deps.concat(devDeps)
