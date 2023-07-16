@@ -12,6 +12,15 @@
   "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
+    "menus": {
+      "view/title": [
+        {
+          "command": "nodeDependencies.refreshEntry",
+          "when": "view == nodeDependencies",
+          "group": "navigation"
+      }
+      ]
+    },
     "views": {
       "explorer": [
         {
@@ -19,7 +28,17 @@
           "name": "Node dependencies"
         }
       ]
-    }
+    },
+    "commands":[
+      {
+        "command": "nodeDependencies.refreshEntry",
+        "title": "Refresh",
+        "icon":{
+          "light": "./resources/dark/refresh.svg",
+          "dark": "./resources/dark/refresh.svg"
+        }
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "pnpm run package",
