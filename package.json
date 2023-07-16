@@ -12,6 +12,12 @@
   "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
+    "viewsWelcome": [
+      {
+        "view": "nodeDependencies",
+        "contents": "No node dependencies found [learn more](https://www.npmjs.com/).\n[Add Dependency](command:nodeDependencies.addEntry)"
+      }
+    ],
     "menus": {
       "view/title": [
         {
@@ -22,6 +28,14 @@
       ]
     },
     "views": {
+      "package-explorer": [
+        {
+          "id": "nodeDependencies",
+          "name": "Node Dependencies",
+          "icon": "./resources/dark/logo.png",
+          "contextualTitle": "Package Explorer"
+        }
+      ],
       "explorer": [
         {
           "id": "nodeDependencies",
