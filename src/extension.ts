@@ -5,15 +5,13 @@ export function activate (context: ExtensionContext){
 	const rootPath = workspace.workspaceFolders && workspace.workspaceFolders.length > 0
 	? workspace.workspaceFolders[0].uri.fsPath
 	: undefined;
+	const nodeDeps = new NodeDeps(rootPath!);
 	window.registerTreeDataProvider(
-		'nodeDependencies',
-		new NodeDeps(rootPath!)
+	    'nodeDependencies',
+		nodeDeps
 	)
-	window.createTreeView(
-		'nodeDependencies',
-		{
-			treeDataProvider: new NodeDeps(rootPath!)
-		}
-	)
+	commands.registerCommand('nodeDependencies.refreshEntry',()=>{
+		nodeDeps.refresh();
+	})
 }
 export function deactive(){}
