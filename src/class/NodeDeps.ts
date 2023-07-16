@@ -1,4 +1,4 @@
-import { TreeDataProvider, TreeItem, TreeItemCollapsibleState, window } from 'vscode';
+import { Event, TreeDataProvider, TreeItem, TreeItemCollapsibleState, window, EventEmitter } from 'vscode';
 import { Dependency } from './Dependency';
 import { accessSync, readFileSync } from 'fs';
 import path = require('path');
@@ -69,5 +69,10 @@ export class NodeDeps implements TreeDataProvider<Dependency> {
         }catch(err){
             return false;
         }
+    }
+    private _onDidChangeTreeUpdate: EventEmitter <Dependency | undefined| null | void> = new EventEmitter<Dependency | undefined | null | void>();
+    readonly onDidChangeTreeData: Event <Dependency | undefined| null | void> = this._onDidChangeTreeUpdate.event;
+    refresh():void{
+        this._onDidChangeTreeUpdate.fire();
     }
 }
